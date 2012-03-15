@@ -254,6 +254,36 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 	}
 
 	/**
+	 * Return the size of the given file.
+	 * @abstract
+	 * @param string $filename
+	 * @return int|bool If failed to get file size, returns FALSE
+	 */
+	public function getFileSize($filename)
+	{
+		if ( $this->_supports('SIZE') === false )
+		{
+			return false;
+		}
+
+		$response = $this->_request(sprintf('SIZE %s', $filename));
+
+		if ( $response['code'] !== 213 )
+		{
+			return false;
+		}
+
+		$tokens = explode(' ', $response['message']);
+
+		if ( isset($tokens[1]) === false )
+		{
+			return false;
+		}
+
+		return intval($tokens[1]);
+	}
+
+	/**
 	 * Download a file from the FTP server.
 	 * @param string $remoteFilename
 	 * @param string $localFilename
@@ -544,5 +574,16 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 		}
 
 		return $features;
+	}
+
+	/**
+	 * Determine if a specific command supported.
+	 * @param string $command
+	 * @return bool
+	 */
+	protected function _supports($command)
+	{
+		$features = $this->getFeatures();
+		return array_key_exists($command, $features);
 	}
 }

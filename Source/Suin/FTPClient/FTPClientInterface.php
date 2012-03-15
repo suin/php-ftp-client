@@ -112,6 +112,14 @@ interface Suin_FTPClient_FTPClientInterface
 	public function getList($directory);
 
 	/**
+	 * Return the size of the given file.
+	 * @abstract
+	 * @param string $filename
+	 * @return int|bool If failed to get file size, returns FALSE
+	 */
+	public function getFileSize($filename);
+
+	/**
 	 * Download a file from the FTP server.
 	 * @abstract
 	 * @param string $remoteFilename
