@@ -1,0 +1,7 @@
+<?php
+
+const FTP_CLIENT_TEST_FTP_HOST = 'localhost';
+const FTP_CLIENT_TEST_FTP_PORT = 21;
+const FTP_CLIENT_TEST_FTP_USER = 'suin';
+const FTP_CLIENT_TEST_FTP_PASS = '';
+const FTP_CLIENT_TEST_REMOTE_SANDBOX_DIR = '/tmp';

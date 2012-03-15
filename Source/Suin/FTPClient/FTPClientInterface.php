@@ -1,36 +1,29 @@
 <?php
 
-namespace Suin\FTPClient;
-
-interface FTPClientInterface
+interface Suin_FTPClient_FTPClientInterface
 {
 	const MODE_ASCII  = 1;
 	const MODE_BINARY = 2;
+
+	const TRANSFER_MODE_ACTIVE  = 1;
+	const TRANSFER_MODE_PASSIVE = 2;
 
 	/**
 	 * Connect to the server and return the new FTPClientInterface object.
 	 * @param string $host
 	 * @param int $port
+	 * @param int $transferMode
 	 * @throws \RuntimeException If failed to connect to the server.
 	 */
-	public function __construct($host, $port = 21);
+	public function __construct($host, $port = 21, $transferMode = self::TRANSFER_MODE_PASSIVE);
 
 	/**
 	 * Login to the server.
-	 * @abstract
 	 * @param string $username
 	 * @param string $password
-	 * @return void
-	 * @throws \RuntimeException If failed to login to the server.
+	 * @return bool If success return TRUE, fail return FALSE.
 	 */
 	public function login($username, $password);
-
-	/**
-	 * Turn on passive mode.
-	 * @abstract
-	 * @return void
-	 */
-	public function enablePassive();
 
 	/**
 	 * Close the connection.
@@ -42,8 +35,7 @@ interface FTPClientInterface
 	/**
 	 * Return the current directory name.
 	 * @abstract
-	 * @return string
-	 * @throws \RuntimeException If getting the current directory fails.
+	 * @return string|bool If error, returns FALSE.
 	 */
 	public function getCurrentDirectory();
 
@@ -51,8 +43,7 @@ interface FTPClientInterface
 	 * Change the current directory on a FTP server.
 	 * @abstract
 	 * @param string $directory
-	 * @return void
-	 * @throws \RuntimeException If changing directory fails.
+	 * @return bool If success return TRUE, fail return FALSE.
 	 */
 	public function changeDirectory($directory);
 
@@ -60,8 +51,7 @@ interface FTPClientInterface
 	 * Remove a directory.
 	 * @abstract
 	 * @param string $directory
-	 * @return void
-	 * @throws \RuntimeException If removing a directory fails.
+	 * @return bool If success return TRUE, fail return FALSE.
 	 */
 	public function removeDirectory($directory);
 
@@ -69,8 +59,7 @@ interface FTPClientInterface
 	 * Create a directory.
 	 * @abstract
 	 * @param string $directory
-	 * @return void
-	 * @throws \RuntimeException If creating a directory fails.
+	 * @return bool If success return TRUE, fail return FALSE.
 	 */
 	public function createDirectory($directory);
 
@@ -79,33 +68,15 @@ interface FTPClientInterface
 	 * @abstract
 	 * @param string $oldName
 	 * @param string $newName
+	 * @return bool If success return TRUE, fail return FALSE.
 	 */
 	public function rename($oldName, $newName);
-
-	/**
-	 * Return the size of the given file.
-	 * @abstract
-	 * @param string $filename
-	 * @return int
-	 * @throws \RuntimeException If getting the size of the given file fails.
-	 */
-	public function getFileSize($filename);
-
-	/**
-	 * Return the last modified time of the given file.
-	 * @abstract
-	 * @param string $filename
-	 * @return int The last modified time as a Unix timestamp
-	 * @throws \RuntimeException If getting the modified time fails.
-	 */
-	public function getModifiedTime($filename);
 
 	/**
 	 * Delete a file on the FTP server.
 	 * @abstract
 	 * @param string $filename
-	 * @return void
-	 * @throws \RuntimeException If deleting the file fails.
+	 * @return bool If success return TRUE, fail return FALSE.
 	 */
 	public function removeFile($filename);
 
@@ -114,7 +85,7 @@ interface FTPClientInterface
 	 * @abstract
 	 * @param string $filename
 	 * @param int $mode The new permissions, given as an octal value.
-	 * @throws \RuntimeException If chmod fails.
+	 * @return bool If success return TRUE, fail return FALSE.
 	 */
 	public function setPermission($filename, $mode);
 
@@ -122,8 +93,7 @@ interface FTPClientInterface
 	 * Return a list of files in the given directory.
 	 * @abstract
 	 * @param string $directory
-	 * @return array
-	 * @throws \RuntimeException If getting a list fails.
+	 * @return array|bool If error, returns FALSE.
 	 */
 	public function getList($directory);
 
@@ -133,7 +103,7 @@ interface FTPClientInterface
 	 * @param string $remoteFilename
 	 * @param string $localFilename
 	 * @param int $mode MODE_ASCII or MODE_BINARY
-	 * @throws \RuntimeException If downloading a file fails.
+	 * @return bool If success return TRUE, fail return FALSE.
 	 */
 	public function download($remoteFilename, $localFilename, $mode);
 
@@ -143,7 +113,7 @@ interface FTPClientInterface
 	 * @param string $localFilename
 	 * @param string $remoteFilename
 	 * @param int $mode MODE_ASCII or MODE_BINARY
-	 * @throws \RuntimeException If uploading a file fails.
+	 * @return bool If success return TRUE, fail return FALSE.
 	 */
 	public function upload($localFilename, $remoteFilename, $mode);
 }

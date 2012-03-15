@@ -2,8 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="26fd3371-9dc1-423c-8dd9-bcd643ead7d3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Source/Suin/.phpmake" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClientInterface.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Coverage/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/FTPClient/.phpmake" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClient.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Source/Suin/FTPClient/ObservableInterface.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Source/Suin/FTPClient/ObserverInterface.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Source/Suin/FTPClient/StdOutObserver.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Bootstrap.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/FTPClient/FTPClientTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/FTPConfig.sample.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/phpunit.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/FTPClient.iml" afterPath="$PROJECT_DIR$/.idea/FTPClient.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Source/Suin/.phpmake" afterPath="$PROJECT_DIR$/Source/Suin/.phpmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClientInterface.php" afterPath="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClientInterface.php" />
     </list>
     <ignored path="FTPClient.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,16 +39,129 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="FTPClientInterface.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="FTPClientInterface.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/FTPClientInterface.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="0" selection-start="691" selection-end="691" vertical-scroll-proportion="-2.817923">
+            <state line="116" column="0" selection-start="2939" selection-end="2939" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FTPClient.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/FTPClient.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="169" column="42" selection-start="4064" selection-end="4067" vertical-scroll-proportion="2.02029">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FTPClientTest.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/FTPClient/FTPClientTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="449" column="0" selection-start="11710" selection-end="11710" vertical-scroll-proportion="-20.961538">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestCase.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/TestCase.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="5" selection-start="685" selection-end="685" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FTPMessageObserver.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/FTPMessageObserver.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="5" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Bootstrap.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/Bootstrap.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="0" selection-start="387" selection-end="387" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="phpunit.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/phpunit.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="24" selection-start="60" selection-end="69" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ObservableInterface.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/ObservableInterface.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="44" selection-start="17" selection-end="51" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StdOutObserver.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/StdOutObserver.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="0" selection-start="89" selection-end="408" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ObserverInterface.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/ObserverInterface.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="0" selection-start="52" selection-end="309" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FTPConfig.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/FTPConfig.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="47" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FTPConfig.sample.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/FTPConfig.sample.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="40" selection-start="174" selection-end="208" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="61" selection-start="69" selection-end="69" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
   </component>
   <component name="Git.Settings">
     <option name="LINE_SEPARATORS_CONVERSION" value="ASK" />
@@ -43,12 +170,32 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/Source/Suin/FTPClient/ObserverInterface.php" />
+        <option value="$PROJECT_DIR$/Source/Suin/FTPClient/StdOutObserver.php" />
+        <option value="$PROJECT_DIR$/Source/Suin/FTPClient/FTPInvalidResponseException.php" />
         <option value="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClientInterface.php" />
+        <option value="$PROJECT_DIR$/Source/Suin/FTPClient/test.php" />
+        <option value="$PROJECT_DIR$/Source/Suin/FTPClient/ObservableInterface.php" />
+        <option value="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClient.php" />
+        <option value="$PROJECT_DIR$/Tests/phpunit.xml" />
+        <option value="$PROJECT_DIR$/test.php" />
+        <option value="$PROJECT_DIR$/Tests/FTPConfig.sample.php" />
+        <option value="$PROJECT_DIR$/Tests/FTPMessageObserver.php" />
+        <option value="$PROJECT_DIR$/Tests/FTPConfig.php" />
+        <option value="$PROJECT_DIR$/Tests/Bootstrap.php" />
+        <option value="$PROJECT_DIR$/Tests/TestCase.php" />
+        <option value="$USER_HOME$/Desktop/Socket.php" />
+        <option value="$PROJECT_DIR$/Tests/FTPClient/FTPClientTest.php" />
       </list>
     </option>
   </component>
   <component name="PerforceDirect.Settings">
     <option name="myCanGoOffline" value="true" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true">
+    <include_path>
+      <path value="$USER_HOME$/.phpbrew/php/php-5.4.0/lib/php" />
+    </include_path>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
@@ -69,7 +216,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -80,37 +227,22 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FTPClient" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.sourceCode" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.lastSelected" value="reference.webide.settings.project.settings.php" />
+    <property name="FullScreen" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClient.php">
+      <method>
+        <option name="PhingTarget" enabled="false" />
+      </method>
+    </configuration>
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -134,6 +266,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+      <changelist id="26fd3371-9dc1-423c-8dd9-bcd643ead7d3" name="Default" comment="" />
       <created>1331633975471</created>
       <updated>1331633975471</updated>
     </task>
@@ -143,23 +276,23 @@
     <frame x="0" y="22" width="1440" height="798" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297414" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -215,9 +348,92 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/Sites/Mew/Vendor/MewUnit/Framework/Fixture.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="31" selection-start="572" selection-end="591" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/Socket.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="631" column="34" selection-start="17175" selection-end="17188" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Sites/Mew/Vendor/MewUnit/Framework/TestCase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="0" selection-start="924" selection-end="1386" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/FTPMessageObserver.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="5" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/Bootstrap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="387" selection-end="387" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/phpunit.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="24" selection-start="60" selection-end="69" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/ObservableInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="44" selection-start="17" selection-end="51" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/StdOutObserver.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="89" selection-end="408" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/ObserverInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="52" selection-end="309" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/FTPConfig.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="47" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/FTPConfig.sample.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="40" selection-start="174" selection-end="208" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="61" selection-start="69" selection-end="69" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/TestCase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="5" selection-start="685" selection-end="685" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/FTPClientInterface.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="691" selection-end="691" vertical-scroll-proportion="-2.817923">
+        <state line="116" column="0" selection-start="2939" selection-end="2939" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/FTPClient/FTPClientTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="449" column="0" selection-start="11710" selection-end="11710" vertical-scroll-proportion="-20.961538">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/FTPClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="169" column="42" selection-start="4064" selection-end="4067" vertical-scroll-proportion="2.02029">
           <folding />
         </state>
       </provider>

@@ -1,0 +1,4 @@
+namespace = Suin_FTPClient
+namespaceSeparator = _
+testCaseClass = Suin_FTPClient_Test_TestCase
+classDocComment = Off
