@@ -11,6 +11,9 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 	/** @var Suin_FTPClient_ObserverInterface */
 	protected $observer = null;
 
+	protected $system = null;
+	protected $features = null;
+
 	/**
 	 * Connect to the server and return the new FTPClientInterface object.
 	 * @param string $host
@@ -74,57 +77,30 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 
 	/**
 	 * Return the system name.
-	 * @abstract
 	 * @return string|bool If error returns FALSE
 	 */
 	public function getSystem()
 	{
-		$response = $this->_request('SYST');
-
-		if ( $response['code'] !== 215 )
+		if ( $this->system === null )
 		{
-			return false;
+			$this->system = $this->_getSystem();
 		}
 
-		$tokens = explode(' ', $response['message']);
-		return $tokens[1];
+		return $this->system;
 	}
 
 	/**
 	 * Return the features.
-	 * @abstract
 	 * @return array|bool If error returns FALSE
 	 */
 	public function getFeatures()
 	{
-		$response = $this->_request('FEAT');
-
-		if ( $response['code'] !== 211 )
+		if ( $this->features === null )
 		{
-			return false;
+			$this->features = $this->_getFeatures();
 		}
 
-		$lines = explode("\n", $response['message']);
-		$lines = array_map('trim', $lines);
-		$lines = array_filter($lines);
-
-		if ( count($lines) < 2 )
-		{
-			return false;
-		}
-
-		$lines = array_slice($lines, 1, count($lines) - 2);
-
-		$features = array();
-
-		foreach ( $lines as $line )
-		{
-			$tokens = explode(' ', $line);
-			$feature =$tokens[0];
-			$features[$feature] = $line;
-		}
-
-		return $features;
+		return $this->features;
 	}
 
 	/**
@@ -515,5 +491,58 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 		}
 
 		return $response;
+	}
+
+	/**
+	 * Return the system name.
+	 * @return string|bool If error returns FALSE
+	 */
+	protected function _getSystem()
+	{
+		$response = $this->_request('SYST');
+
+		if ( $response['code'] !== 215 )
+		{
+			return false;
+		}
+
+		$tokens = explode(' ', $response['message']);
+		return $tokens[1];
+	}
+
+	/**
+	 * Return the features.
+	 * @return array|bool If error returns FALSE
+	 */
+	protected function _getFeatures()
+	{
+		$response = $this->_request('FEAT');
+
+		if ( $response['code'] !== 211 )
+		{
+			return false;
+		}
+
+		$lines = explode("\n", $response['message']);
+		$lines = array_map('trim', $lines);
+		$lines = array_filter($lines);
+
+		if ( count($lines) < 2 )
+		{
+			return false;
+		}
+
+		$lines = array_slice($lines, 1, count($lines) - 2);
+
+		$features = array();
+
+		foreach ( $lines as $line )
+		{
+			$tokens = explode(' ', $line);
+			$feature =$tokens[0];
+			$features[$feature] = $line;
+		}
+
+		return $features;
 	}
 }
