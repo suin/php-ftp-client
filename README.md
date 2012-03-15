@@ -17,17 +17,54 @@ Just copy ```Source/Suin``` to vendors directory in your project.
 ## How to Use
 
 ```
+<?php
 try
 {
 	$client = new Suin_FTPClient_FTPClient('127.0.0.1');
-	$client->login('suin', 'password');;
-	$client->upload('foo.php', 'foo.php', Suin_FTPClient_FTPClient::MODE_BINARY);
+	
+	if ( $client->login('suin', 'password') === false )
+	{
+		echo 'Cannot login!';
+	}
+	
+	if ( $client->upload('foo.php', 'foo.php', Suin_FTPClient_FTPClient::MODE_BINARY) === false )
+	{
+		echo 'Failed to upload!';
+	}
+	
 	$client->disconnect();
 }
 catch ( Exception $e )
 {
 	echo $e;
 }
+```
+
+More detail, please see ```Suin_FTPClient_FTPClientInterface```.
+
+## Observer for debugging
+
+For logging the TCP messages, you can assing an observer object to FTPClient object.
+The observer object must implement ```Suin_FTPClient_ObserverInterface```.
+
+```
+<?php
+class MyObserver implements Suin_FTPClient_ObserverInterface
+{
+	public function updateWithRequest($request)
+	{
+		echo 'PUT > '.$request;
+	}
+
+	public function updateWithResponse($message, $code)
+	{
+		echo 'GET < '.$message;
+	}
+}
+
+$myObserver = new MyObserver();
+$client = new Suin_FTPClient_FTPClient('127.0.0.1');
+$client->setObserver($myObserver);
 ```
 
 ## Testing

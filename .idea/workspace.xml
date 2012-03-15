@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="26fd3371-9dc1-423c-8dd9-bcd643ead7d3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClient.php" afterPath="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClient.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClientInterface.php" afterPath="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClientInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="FTPClient.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,10 +51,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="test.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="44" selection-start="615" selection-end="615" vertical-scroll-proportion="0.5945946">
+            <state line="21" column="44" selection-start="615" selection-end="615" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -64,7 +63,7 @@
       <file leaf-file-name="Custom.class.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Sites/Pack2011/xoops_trust_path/modules/xupdate/class/ftp/Custom.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="262" column="27" selection-start="8664" selection-end="8668" vertical-scroll-proportion="-6.8076925">
+            <state line="262" column="27" selection-start="8664" selection-end="8668" vertical-scroll-proportion="-166.6923">
               <folding />
             </state>
           </provider>
@@ -74,6 +73,15 @@
         <entry file="file://$USER_HOME$/Sites/Pack2011/xoops_trust_path/modules/xupdate/class/ftp/Custom_pure.class.php">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StdOutObserver.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/StdOutObserver.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="0" selection-start="89" selection-end="408" vertical-scroll-proportion="0.12517782">
               <folding />
             </state>
           </provider>
@@ -296,11 +304,6 @@
         <state line="2" column="44" selection-start="17" selection-end="51" vertical-scroll-proportion="0.06258891" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/StdOutObserver.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="89" selection-end="408" vertical-scroll-proportion="0.12517782" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/ObserverInterface.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="0" selection-start="52" selection-end="309" vertical-scroll-proportion="0.12517782" />
@@ -330,23 +333,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Sites/Pack2011/xoops_trust_path/modules/xupdate/class/ftp/Custom.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="262" column="27" selection-start="8664" selection-end="8668" vertical-scroll-proportion="-6.8076925">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Sites/Pack2011/xoops_trust_path/modules/xupdate/class/ftp/Custom_pure.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/FTPClientInterface.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="120" column="43" selection-start="2902" selection-end="3208" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="44" selection-start="615" selection-end="615" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -358,11 +354,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.php">
+    <entry file="file://$USER_HOME$/Sites/Pack2011/xoops_trust_path/modules/xupdate/class/ftp/Custom.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="44" selection-start="615" selection-end="615" vertical-scroll-proportion="0.5945946">
+        <state line="262" column="27" selection-start="8664" selection-end="8668" vertical-scroll-proportion="-166.6923">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Sites/Pack2011/xoops_trust_path/modules/xupdate/class/ftp/Custom_pure.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/StdOutObserver.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="89" selection-end="408" vertical-scroll-proportion="0.12517782" />
       </provider>
     </entry>
   </component>
