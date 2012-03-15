@@ -26,6 +26,20 @@ interface Suin_FTPClient_FTPClientInterface
 	public function login($username, $password);
 
 	/**
+	 * Return the system name.
+	 * @abstract
+	 * @return string|bool If error returns FALSE
+	 */
+	public function getSystem();
+
+	/**
+	 * Return the features.
+	 * @abstract
+	 * @return array|bool If error returns FALSE
+	 */
+	public function getFeatures();
+
+	/**
 	 * Close the connection.
 	 * @abstract
 	 * @return void

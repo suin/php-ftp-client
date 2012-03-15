@@ -2,24 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="26fd3371-9dc1-423c-8dd9-bcd643ead7d3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Coverage/.gitkeep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/FTPClient/.phpmake" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClient.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Source/Suin/FTPClient/ObservableInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Source/Suin/FTPClient/ObserverInterface.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Source/Suin/FTPClient/StdOutObserver.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Bootstrap.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/FTPClient/FTPClientTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/FTPConfig.sample.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/FTPMessageObserver.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/TestCase.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/phpunit.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/FTPClient.iml" afterPath="$PROJECT_DIR$/.idea/FTPClient.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Source/Suin/.phpmake" afterPath="$PROJECT_DIR$/Source/Suin/.phpmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClient.php" afterPath="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClient.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClientInterface.php" afterPath="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClientInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tests/FTPClient/FTPClientTest.php" afterPath="$PROJECT_DIR$/Tests/FTPClient/FTPClientTest.php" />
     </list>
     <ignored path="FTPClient.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,109 +27,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="FTPClientTest.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/FTPClient/FTPClientTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="683" column="40" selection-start="17798" selection-end="17798" vertical-scroll-proportion="-347.57693">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="FTPClientInterface.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/FTPClientInterface.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="116" column="0" selection-start="2939" selection-end="2939" vertical-scroll-proportion="0.0">
+            <state line="32" column="32" selection-start="814" selection-end="942" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FTPClient.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="FTPClient.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/FTPClient.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="272" column="49" selection-start="6604" selection-end="6608" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FTPClientTest.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Tests/FTPClient/FTPClientTest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="778" column="56" selection-start="20508" selection-end="20508" vertical-scroll-proportion="0.83751845">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestCase.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/TestCase.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="5" selection-start="685" selection-end="685" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FTPMessageObserver.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/FTPMessageObserver.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="5" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Bootstrap.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/Bootstrap.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="387" selection-end="387" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="phpunit.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/phpunit.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="24" selection-start="60" selection-end="69" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ObservableInterface.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/ObservableInterface.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="44" selection-start="17" selection-end="51" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StdOutObserver.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/StdOutObserver.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="89" selection-end="408" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ObserverInterface.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/ObserverInterface.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="52" selection-end="309" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FTPConfig.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/FTPConfig.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="47" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FTPConfig.sample.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/FTPConfig.sample.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="40" selection-start="174" selection-end="208" vertical-scroll-proportion="0.0">
+            <state line="112" column="25" selection-start="2565" selection-end="2565" vertical-scroll-proportion="0.6173913">
               <folding />
             </state>
           </provider>
@@ -152,7 +57,25 @@
       <file leaf-file-name="test.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="61" selection-start="69" selection-end="69" vertical-scroll-proportion="0.0">
+            <state line="21" column="27" selection-start="598" selection-end="598" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Custom.class.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Sites/Pack2011/xoops_trust_path/modules/xupdate/class/ftp/Custom.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="314" column="31" selection-start="10292" selection-end="10300" vertical-scroll-proportion="-0.88461536">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Custom_pure.class.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Sites/Pack2011/xoops_trust_path/modules/xupdate/class/ftp/Custom_pure.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -175,12 +98,9 @@
         <option value="$PROJECT_DIR$/Source/Suin/FTPClient/ObserverInterface.php" />
         <option value="$PROJECT_DIR$/Source/Suin/FTPClient/StdOutObserver.php" />
         <option value="$PROJECT_DIR$/Source/Suin/FTPClient/FTPInvalidResponseException.php" />
-        <option value="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClientInterface.php" />
         <option value="$PROJECT_DIR$/Source/Suin/FTPClient/test.php" />
         <option value="$PROJECT_DIR$/Source/Suin/FTPClient/ObservableInterface.php" />
-        <option value="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClient.php" />
         <option value="$PROJECT_DIR$/Tests/phpunit.xml" />
-        <option value="$PROJECT_DIR$/test.php" />
         <option value="$PROJECT_DIR$/Tests/FTPConfig.sample.php" />
         <option value="$PROJECT_DIR$/Tests/FTPMessageObserver.php" />
         <option value="$PROJECT_DIR$/Tests/FTPConfig.php" />
@@ -188,6 +108,9 @@
         <option value="$PROJECT_DIR$/Tests/TestCase.php" />
         <option value="$USER_HOME$/Desktop/Socket.php" />
         <option value="$PROJECT_DIR$/Tests/FTPClient/FTPClientTest.php" />
+        <option value="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClientInterface.php" />
+        <option value="$PROJECT_DIR$/test.php" />
+        <option value="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClient.php" />
       </list>
     </option>
   </component>
@@ -236,8 +159,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="reference.webide.settings.project.settings.php" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/Source/Suin/FTPClient/FTPClient.php">
@@ -350,92 +273,96 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Sites/Mew/Vendor/MewUnit/Framework/Fixture.php">
+    <entry file="file://$PROJECT_DIR$/Tests/TestCase.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="31" selection-start="572" selection-end="591" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/Socket.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="631" column="34" selection-start="17175" selection-end="17188" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Sites/Mew/Vendor/MewUnit/Framework/TestCase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="924" selection-end="1386" vertical-scroll-proportion="0.0" />
+        <state line="28" column="5" selection-start="685" selection-end="685" vertical-scroll-proportion="0.03188406" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/FTPMessageObserver.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="5" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0" />
+        <state line="26" column="5" selection-start="531" selection-end="531" vertical-scroll-proportion="0.68705547" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/Bootstrap.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="387" selection-end="387" vertical-scroll-proportion="0.0" />
+        <state line="15" column="0" selection-start="387" selection-end="387" vertical-scroll-proportion="0.4694168" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/phpunit.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="24" selection-start="60" selection-end="69" vertical-scroll-proportion="0.0" />
+        <state line="2" column="24" selection-start="60" selection-end="69" vertical-scroll-proportion="0.031294454" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/ObservableInterface.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="44" selection-start="17" selection-end="51" vertical-scroll-proportion="0.0" />
+        <state line="2" column="44" selection-start="17" selection-end="51" vertical-scroll-proportion="0.06258891" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/StdOutObserver.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="89" selection-end="408" vertical-scroll-proportion="0.0" />
+        <state line="4" column="0" selection-start="89" selection-end="408" vertical-scroll-proportion="0.12517782" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/ObserverInterface.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="52" selection-end="309" vertical-scroll-proportion="0.0" />
+        <state line="4" column="0" selection-start="52" selection-end="309" vertical-scroll-proportion="0.12517782" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/FTPConfig.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="47" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0" />
+        <state line="5" column="47" selection-start="178" selection-end="178" vertical-scroll-proportion="0.15647227" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/FTPConfig.sample.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="40" selection-start="174" selection-end="208" vertical-scroll-proportion="0.0" />
+        <state line="6" column="40" selection-start="174" selection-end="208" vertical-scroll-proportion="0.18776672" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.php">
+    <entry file="file://$USER_HOME$/Sites/Pack2011/xoops_trust_path/modules/xupdate/class/ftp/Phpfunc.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="61" selection-start="69" selection-end="69" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/FTPClientInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="0" selection-start="2939" selection-end="2939" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/TestCase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="5" selection-start="685" selection-end="685" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/FTPClient.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="272" column="49" selection-start="6604" selection-end="6608" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/FTPClient/FTPClientTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="778" column="56" selection-start="20508" selection-end="20508" vertical-scroll-proportion="0.83751845">
+        <state line="683" column="40" selection-start="17798" selection-end="17798" vertical-scroll-proportion="-347.57693">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/FTPClientInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="32" selection-start="814" selection-end="942" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Sites/Pack2011/xoops_trust_path/modules/xupdate/class/ftp/Custom_pure.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Sites/Pack2011/xoops_trust_path/modules/xupdate/class/ftp/Custom.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="314" column="31" selection-start="10292" selection-end="10300" vertical-scroll-proportion="-0.88461536">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="27" selection-start="598" selection-end="598" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/FTPClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="25" selection-start="2565" selection-end="2565" vertical-scroll-proportion="0.6173913">
           <folding />
         </state>
       </provider>

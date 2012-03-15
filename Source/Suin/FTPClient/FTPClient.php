@@ -73,6 +73,61 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 	}
 
 	/**
+	 * Return the system name.
+	 * @abstract
+	 * @return string|bool If error returns FALSE
+	 */
+	public function getSystem()
+	{
+		$response = $this->_request('SYST');
+
+		if ( $response['code'] !== 215 )
+		{
+			return false;
+		}
+
+		$tokens = explode(' ', $response['message']);
+		return $tokens[1];
+	}
+
+	/**
+	 * Return the features.
+	 * @abstract
+	 * @return array|bool If error returns FALSE
+	 */
+	public function getFeatures()
+	{
+		$response = $this->_request('FEAT');
+
+		if ( $response['code'] !== 211 )
+		{
+			return false;
+		}
+
+		$lines = explode("\n", $response['message']);
+		$lines = array_map('trim', $lines);
+		$lines = array_filter($lines);
+
+		if ( count($lines) < 2 )
+		{
+			return false;
+		}
+
+		$lines = array_slice($lines, 1, count($lines) - 2);
+
+		$features = array();
+
+		foreach ( $lines as $line )
+		{
+			$tokens = explode(' ', $line);
+			$feature =$tokens[0];
+			$features[$feature] = $line;
+		}
+
+		return $features;
+	}
+
+	/**
 	 * Close the connection.
 	 * @return void
 	 */
@@ -371,15 +426,14 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 			return false;
 		}
 
-		if ( !preg_match('/\((?P<host>[0-9,]+),(?P<port1>[0-9]+),(?P<port2>[0-9]+)\)/', $response['message'], $matches) )
+		$serverInfo = $this->_parsePassiveServerInfo($response['message']);
+
+		if ( $serverInfo === false )
 		{
 			return false;
 		}
 
-		$host = strtr($matches['host'], ',', '.');
-		$port = ( $matches['port1'] * 256 ) + $matches['port2']; // low bit * 256 + high bit
-
-		$dataConnection = fsockopen($host, $port, $errorNumber, $errorString, $this->timeout);
+		$dataConnection = fsockopen($serverInfo['host'], $serverInfo['port'], $errorNumber, $errorString, $this->timeout);
 
 		if ( is_resource($dataConnection) === false )
 		{
@@ -390,6 +444,27 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 		stream_set_timeout($dataConnection, $this->timeout);
 
 		return $dataConnection;
+	}
+
+	/**
+	 * Parse a message and return the host and port.
+	 * @param $message
+	 * @return array|bool
+	 */
+	protected function _parsePassiveServerInfo($message)
+	{
+		if ( !preg_match('/\((?P<host>[0-9,]+),(?P<port1>[0-9]+),(?P<port2>[0-9]+)\)/', $message, $matches) )
+		{
+			return false;
+		}
+
+		$host = strtr($matches['host'], ',', '.');
+		$port = ( $matches['port1'] * 256 ) + $matches['port2']; // low bit * 256 + high bit
+
+		return array(
+			'host' => $host,
+			'port' => $port,
+		);
 	}
 
 	/**
@@ -421,11 +496,16 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 			'message' => '',
 		);
 
-		do
+		while ( true )
 		{
-			$response['message'] = fgets($this->connection, 8129);
-			$array = stream_get_meta_data($this->connection);
-		} while ( $array['unread_bytes'] > 0 );
+			$line = fgets($this->connection, 8129);
+			$response['message'] .= $line;
+
+			if ( preg_match('/^[0-9]{3} /', $line) )
+			{
+				break;
+			}
+		}
 
 		$response['code'] = intval(substr(ltrim($response['message']), 0, 3));
 

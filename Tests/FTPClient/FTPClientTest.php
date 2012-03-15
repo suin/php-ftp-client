@@ -306,9 +306,16 @@ class Suin_FTPClient_FTPClientTest extends Suin_FTPClient_Test_TestCase
 		$this->assertTrue($actual);
 	}
 
+	/**
+	 * @depends testRealServerAvailable
+	 */
 	public function testRemoveDirectory_With_real_server()
 	{
-		// TODO
+		$dirname = __FUNCTION__;
+		$client = $this->getNewFTPClient();
+		$client->createDirectory($dirname);
+		$actual = $client->removeDirectory($dirname);
+		$this->assertTrue($actual);
 	}
 
 	public function testCreateDirectory()
@@ -344,9 +351,15 @@ class Suin_FTPClient_FTPClientTest extends Suin_FTPClient_Test_TestCase
 		$this->assertTrue($actual);
 	}
 
+	/**
+	 * @depends testRealServerAvailable
+	 */
 	public function testCreateDirectory_With_real_server()
 	{
-		// TODO 
+		$client = $this->getNewFTPClient();
+		$actual = $client->createDirectory(__FUNCTION__);
+		$client->removeDirectory(__FUNCTION__);
+		$this->assertTrue($actual);
 	}
 
 	public function testRename()
@@ -409,9 +422,19 @@ class Suin_FTPClient_FTPClientTest extends Suin_FTPClient_Test_TestCase
 		$this->assertTrue($actual);
 	}
 
+	/**
+	 * @depends testRealServerAvailable
+	 */
 	public function testRename_With_real_server()
 	{
-		// TODO
+		$oldName = __FUNCTION__.'1';
+		$newName = __FUNCTION__.'2';
+
+		$client = $this->getNewFTPClient();
+		$client->createDirectory($oldName);
+		$actual = $client->rename($oldName, $newName);
+		$client->removeDirectory($newName);
+		$this->assertTrue($actual);
 	}
 
 	public function testRemoveFile()
@@ -508,6 +531,9 @@ class Suin_FTPClient_FTPClientTest extends Suin_FTPClient_Test_TestCase
 		$this->assertTrue($actual);
 	}
 
+	/**
+	 * @depends testRealServerAvailable
+	 */
 	public function testSetPermission_With_real_server()
 	{
 		// TODO
@@ -581,6 +607,9 @@ class Suin_FTPClient_FTPClientTest extends Suin_FTPClient_Test_TestCase
 		$this->assertSame($expect, $actual);
 	}
 
+	/**
+	 * @depends testRealServerAvailable
+	 */
 	public function testGetList_With_real_server()
 	{
 		// TODO
@@ -771,13 +800,483 @@ class Suin_FTPClient_FTPClientTest extends Suin_FTPClient_Test_TestCase
 		$this->assertSame($contents, file_get_contents($localFile));
 	}
 
+	/**
+	 * @depends testRealServerAvailable
+	 */
 	public function testDownload_With_real_server_ASCII()
 	{
-		
+		// TODO
 	}
 
+	/**
+	 * @depends testRealServerAvailable
+	 */
 	public function testDownload_With_real_server_BINARY()
 	{
+		// TODO
+	}
 
+	/**
+	 * @expectedException InvalidArgumentException
+	 * @expectedExceptionMessage Invalid mode "invalid mode" was given
+	 */
+	public function testUpload()
+	{
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_openPassiveDataConnection', '_request'))
+			->getMock();
+		$client
+			->expects($this->never())
+			->method('_openPassiveDataConnection');
+		$client
+			->expects($this->never())
+			->method('_request');
+
+		$client->upload('local file', 'remote file', 'invalid mode');
+	}
+
+
+	/**
+	 * @expectedException RuntimeException
+	 * @expectedExceptionMessage Failed to open local file ""
+	 */
+	public function testUpload_Fails_to_open_local_file()
+	{
+		$this->disableErrorReporting();
+
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_openPassiveDataConnection', '_request'))
+			->getMock();
+		$client
+			->expects($this->never())
+			->method('_openPassiveDataConnection');
+		$client
+			->expects($this->never())
+			->method('_request');
+
+		$client->upload(null, 'remote file', Suin_FTPClient_FTPClient::MODE_ASCII);
+	}
+
+	public function testUpload_Ascii_mode()
+	{
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_openPassiveDataConnection', '_request'))
+			->getMock();
+		$client
+			->expects($this->never())
+			->method('_openPassiveDataConnection');
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('TYPE A')
+			->will($this->returnValue(array('code' => 0)));
+
+		$client->upload('php://memory', 'remote file name', Suin_FTPClient_FTPClient::MODE_ASCII);
+	}
+
+	public function testUpload_Binary_mode()
+	{
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_openPassiveDataConnection', '_request'))
+			->getMock();
+		$client
+			->expects($this->never())
+			->method('_openPassiveDataConnection');
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('TYPE I')
+			->will($this->returnValue(array('code' => 0)));
+
+		$client->upload('php://memory', 'remote file name', Suin_FTPClient_FTPClient::MODE_BINARY);
+	}
+
+	public function testUpload_TYPE_not_200()
+	{
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_openPassiveDataConnection', '_request'))
+			->getMock();
+		$client
+			->expects($this->never())
+			->method('_openPassiveDataConnection');
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('TYPE I')
+			->will($this->returnValue(array('code' => 0)));
+
+		$actual = $client->upload('php://memory', 'remote file name', Suin_FTPClient_FTPClient::MODE_BINARY);
+		$this->assertFalse($actual);
+	}
+
+	public function testUpload_Fails_to_open_data_connection()
+	{
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_openPassiveDataConnection', '_request'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('TYPE I')
+			->will($this->returnValue(array('code' => 200)));
+		$client
+			->expects($this->once())
+			->method('_openPassiveDataConnection')
+			->will($this->returnValue(false));
+
+		$actual = $client->upload('php://memory', 'remote file name', Suin_FTPClient_FTPClient::MODE_BINARY);
+		$this->assertFalse($actual);
+	}
+
+	public function testUpload_STOR_not_150()
+	{
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_openPassiveDataConnection', '_request'))
+			->getMock();
+		$client
+			->expects($this->at(0))
+			->method('_request')
+			->with('TYPE I')
+			->will($this->returnValue(array('code' => 200)));
+		$client
+			->expects($this->at(1))
+			->method('_openPassiveDataConnection')
+			->will($this->returnValue(true));
+		$client
+			->expects($this->at(2))
+			->method('_request')
+			->with('STOR remote file name')
+			->will($this->returnValue(array('code' => 0)));
+
+		$actual = $client->upload('php://memory', 'remote file name', Suin_FTPClient_FTPClient::MODE_BINARY);
+		$this->assertFalse($actual);
+	}
+
+	public function testUpload_Success()
+	{
+		$contents = 'data data data';
+		$dataConnection = tmpfile();
+
+		$localFile = tempnam(sys_get_temp_dir(), 'Tux');
+		file_put_contents($localFile, $contents);
+
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_openPassiveDataConnection', '_request'))
+			->getMock();
+		$client
+			->expects($this->at(0))
+			->method('_request')
+			->with('TYPE I')
+			->will($this->returnValue(array('code' => 200)));
+		$client
+			->expects($this->at(1))
+			->method('_openPassiveDataConnection')
+			->will($this->returnValue($dataConnection));
+		$client
+			->expects($this->at(2))
+			->method('_request')
+			->with('STOR foo')
+			->will($this->returnValue(array('code' => 150)));
+
+		$actual = $client->upload($localFile, 'foo', Suin_FTPClient_FTPClient::MODE_BINARY);
+		$this->assertTrue($actual);
+
+		fseek($dataConnection, 0);
+
+		$this->assertSame($contents, fgets($dataConnection));
+	}
+
+	/**
+	 * @depends testRealServerAvailable
+	 */
+	public function testUpload_With_real_server()
+	{
+		// TODO
+	}
+
+	public function testSetObserver()
+	{
+		$client = $this->getNewFTPClient(false);
+
+		$this->assertAttributeSame(null, 'observer', $client);
+
+		$observer = new Suin_FTPClient_StdOutObserver();
+
+		$client->setObserver($observer);
+
+		$this->assertAttributeSame($observer, 'observer', $client);
+	}
+
+	public function test_openPassiveDataConnection()
+	{
+		// Response code is not 227
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_request', '_parsePassiveServerInfo'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('PASV')
+			->will($this->returnValue(array('code' => 0)));
+		$client
+			->expects($this->never())
+			->method('_parsePassiveServerInfo');
+
+		$reflectionClass = new ReflectionClass($client);
+		$method = $reflectionClass->getMethod('_openPassiveDataConnection');
+		$method->setAccessible(true);
+		$actual = $method->invoke($client);
+
+		$this->assertFalse($actual);
+	}
+
+	public function test_openPassiveDataConnection_Fails_to_parse_response_message()
+	{
+		$responseMessage = 'the response message';
+
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_request', '_parsePassiveServerInfo'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('PASV')
+			->will($this->returnValue(array('code' => 227, 'message' => $responseMessage)));
+		$client
+			->expects($this->once())
+			->method('_parsePassiveServerInfo')
+			->with($responseMessage)
+			->will($this->returnValue(false));
+
+		$reflectionClass = new ReflectionClass($client);
+		$method = $reflectionClass->getMethod('_openPassiveDataConnection');
+		$method->setAccessible(true);
+		$actual = $method->invoke($client);
+
+		$this->assertFalse($actual);
+	}
+
+	public function test_openPassiveDataConnection_Fails_to_open_socket()
+	{
+		$this->disableErrorReporting();
+
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_request', '_parsePassiveServerInfo'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('PASV')
+			->will($this->returnValue(array('code' => 227, 'message' => 'response message')));
+		$client
+			->expects($this->once())
+			->method('_parsePassiveServerInfo')
+			->will($this->returnValue(array('host' => null, 'port' => null)));
+
+		$reflectionClass = new ReflectionClass($client);
+		$method = $reflectionClass->getMethod('_openPassiveDataConnection');
+		$method->setAccessible(true);
+		$actual = $method->invoke($client);
+
+		$this->assertFalse($actual);
+	}
+
+	/**
+	 * @depends testRealServerAvailable
+	 */
+	public function test_openPassiveDataConnection_With_real_server()
+	{
+		// TODO
+	}
+
+	public function test_parsePassiveServerInfo()
+	{
+		// Fails to parse, as invalid format is given.
+
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->getMock();
+
+		$reflectionClass = new ReflectionClass($client);
+		$method = $reflectionClass->getMethod('_parsePassiveServerInfo');
+		$method->setAccessible(true);
+		$actual = $method->invoke($client, 'invalid format');
+		$this->assertFalse($actual);
+	}
+
+	public function test_parsePassiveServerInfo_Success()
+	{
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->getMock();
+
+		$reflectionClass = new ReflectionClass($client);
+		$method = $reflectionClass->getMethod('_parsePassiveServerInfo');
+		$method->setAccessible(true);
+		$actual = $method->invoke($client, '227 Entering Passive Mode (127,0,0,1,192,3)');
+
+		$expect = array(
+			'host' => '127.0.0.1',
+			'port' => 192 * 256 + 3,
+		);
+		$this->assertSame($expect, $actual);
+	}
+
+	public function test_request()
+	{
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_getResponse'))
+			->getMock();
+
+		$client
+			->expects($this->once())
+			->method('_getResponse')
+			->will($this->returnValue('the result of _getResponse()'));
+
+		$connection = tmpfile();
+
+		$reflectionClass = new ReflectionClass($client);
+		$property = $reflectionClass->getProperty('connection');
+		$property->setAccessible(true);
+		$property->setValue($client, $connection);
+
+		$method = $reflectionClass->getMethod('_request');
+		$method->setAccessible(true);
+		$actual = $method->invoke($client, 'REQUEST');
+
+		$this->assertSame('the result of _getResponse()', $actual);
+
+		fseek($connection, 0);
+		$this->assertSame("REQUEST\r\n", fgets($connection));
+	}
+
+	public function test_request_With_observer()
+	{
+		$expectedRequest = "REQUEST\r\n";
+
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_getResponse'))
+			->getMock();
+
+		$client
+			->expects($this->once())
+			->method('_getResponse')
+			->will($this->returnValue('the result of _getResponse()'));
+
+		$connection = tmpfile();
+		$observer = $this
+			->getMockBuilder('stdclass')
+			->setMethods(array('updateWithRequest'))
+			->getMock();
+		$observer
+			->expects($this->once())
+			->method('updateWithRequest')
+			->with($expectedRequest);
+
+		$reflectionClass = new ReflectionClass($client);
+		$property = $reflectionClass->getProperty('connection');
+		$property->setAccessible(true);
+		$property->setValue($client, $connection);
+
+		$property = $reflectionClass->getProperty('observer');
+		$property->setAccessible(true);
+		$property->setValue($client, $observer);
+
+		$method = $reflectionClass->getMethod('_request');
+		$method->setAccessible(true);
+		$method->invoke($client, 'REQUEST');
+	}
+
+	public function test_getResponse()
+	{
+		$response = "123 Message Message\r\n";
+
+		$connection = tmpfile();
+		fwrite($connection, $response);
+		fseek($connection, 0);
+
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->getMock();
+
+		$class = new ReflectionClass($client);
+		$property = $class->getProperty('connection');
+		$property->setAccessible(true);
+		$property->setValue($client, $connection);
+
+		$method = $class->getMethod('_getResponse');
+		$method->setAccessible(true);
+		$actual = $method->invoke($client);
+		$expect = array(
+			'code'    => 123,
+			'message' => $response,
+		);
+		$this->assertSame($expect, $actual);
+	}
+
+	public function test_getResponse_With_observer()
+	{
+		$response = '123 message message';
+		$code = 123;
+
+		$observer = $this
+			->getMockBuilder('stdclass')
+			->setMethods(array('updateWithResponse'))
+			->getMock();
+		$observer
+			->expects($this->once())
+			->method('updateWithResponse')
+			->with($response, $code);
+
+		$connection = tmpfile();
+		fwrite($connection, $response);
+		fseek($connection, 0);
+
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->getMock();
+
+		$class = new ReflectionClass($client);
+		$property = $class->getProperty('connection');
+		$property->setAccessible(true);
+		$property->setValue($client, $connection);
+
+		$property = $class->getProperty('observer');
+		$property->setAccessible(true);
+		$property->setValue($client, $observer);
+
+		$method = $class->getMethod('_getResponse');
+		$method->setAccessible(true);
+		$method->invoke($client);
 	}
 }
