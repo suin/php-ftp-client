@@ -258,6 +258,7 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 	 * @abstract
 	 * @param string $filename
 	 * @return int|bool If failed to get file size, returns FALSE
+	 * @note Not all servers support this feature!
 	 */
 	public function getFileSize($filename)
 	{
@@ -273,14 +274,40 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 			return false;
 		}
 
-		$tokens = explode(' ', $response['message']);
-
-		if ( isset($tokens[1]) === false )
+		if ( !preg_match('/^[0-9]{3} (?P<size>[0-9]+)$/', trim($response['message']), $matches) )
 		{
 			return false;
 		}
 
-		return intval($tokens[1]);
+		return intval($matches['size']);
+	}
+
+	/**
+	 * Return the last modified time of the given file.
+	 * @param string $filename
+	 * @return int|bool Returns the last modified time as a Unix timestamp on success, or FALSE on error.
+	 * @note Not all servers support this feature!
+	 */
+	public function getModifiedDateTime($filename)
+	{
+		if ( $this->_supports('MDTM') === false )
+		{
+			return false;
+		}
+
+		$response = $this->_request(sprintf('MDTM %s', $filename));
+
+		if ( $response['code'] !== 213 )
+		{
+			return false;
+		}
+
+		if ( !preg_match('/^[0-9]{3} (?P<datetime>[0-9]{14})$/', trim($response['message']), $matches) )
+		{
+			return false;
+		}
+
+		return strtotime($matches['datetime'].' UTC');
 	}
 
 	/**

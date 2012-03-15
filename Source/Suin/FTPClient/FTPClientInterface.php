@@ -116,8 +116,18 @@ interface Suin_FTPClient_FTPClientInterface
 	 * @abstract
 	 * @param string $filename
 	 * @return int|bool If failed to get file size, returns FALSE
+	 * @note Not all servers support this feature!
 	 */
 	public function getFileSize($filename);
+
+	/**
+	 * Return the last modified time of the given file.
+	 * @abstract
+	 * @param string $filename
+	 * @return int|bool Returns the last modified time as a Unix timestamp on success, or FALSE on error.
+	 * @note Not all servers support this feature!
+	 */
+	public function getModifiedDateTime($filename);
 
 	/**
 	 * Download a file from the FTP server.
