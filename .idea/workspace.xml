@@ -12,6 +12,8 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/Bootstrap.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/FTPClient/FTPClientTest.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/FTPConfig.sample.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/FTPMessageObserver.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/TestCase.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Tests/phpunit.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/FTPClient.iml" afterPath="$PROJECT_DIR$/.idea/FTPClient.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Source/Suin/.phpmake" afterPath="$PROJECT_DIR$/Source/Suin/.phpmake" />
@@ -48,19 +50,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FTPClient.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="FTPClient.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/FTPClient.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="169" column="42" selection-start="4064" selection-end="4067" vertical-scroll-proportion="2.02029">
+            <state line="272" column="49" selection-start="6604" selection-end="6608" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FTPClientTest.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="FTPClientTest.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Tests/FTPClient/FTPClientTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="449" column="0" selection-start="11710" selection-end="11710" vertical-scroll-proportion="-20.961538">
+            <state line="778" column="56" selection-start="20508" selection-end="20508" vertical-scroll-proportion="0.83751845">
               <folding />
             </state>
           </provider>
@@ -410,13 +412,6 @@
         <state line="3" column="61" selection-start="69" selection-end="69" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/TestCase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="5" selection-start="685" selection-end="685" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/FTPClientInterface.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="116" column="0" selection-start="2939" selection-end="2939" vertical-scroll-proportion="0.0">
@@ -424,16 +419,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/FTPClient/FTPClientTest.php">
+    <entry file="file://$PROJECT_DIR$/Tests/TestCase.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="449" column="0" selection-start="11710" selection-end="11710" vertical-scroll-proportion="-20.961538">
+        <state line="28" column="5" selection-start="685" selection-end="685" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Source/Suin/FTPClient/FTPClient.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="169" column="42" selection-start="4064" selection-end="4067" vertical-scroll-proportion="2.02029">
+        <state line="272" column="49" selection-start="6604" selection-end="6608" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/FTPClient/FTPClientTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="778" column="56" selection-start="20508" selection-end="20508" vertical-scroll-proportion="0.83751845">
           <folding />
         </state>
       </provider>
