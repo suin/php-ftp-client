@@ -333,7 +333,7 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 
 		/*
 		 * WHY USE 'wb' HERE?
-		 * As fopen() function modifies line break character like LF, CR, CRLF depending on SAPI,
+		 * As fopen() function modifies line break character like LF, CR and CRLF depending on SAPI,
 		 * we use 'b' here in order to receive data as plain.
 		 * @see http://www.php.net/manual/en/function.fopen.php
 		 */
@@ -396,8 +396,8 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 		}
 
 		/*
-		 * WHY USE 'wb' HERE?
-		 * As fopen() function modifies line break character like LF, CR, CRLF depending on SAPI,
+		 * WHY USE 'rb' HERE?
+		 * As fopen() function modifies line break character like LF, CR and CRLF depending on SAPI,
 		 * we use 'b' here in order to receive data as plain.
 		 * @see http://www.php.net/manual/en/function.fopen.php
 		 */
