@@ -161,6 +161,46 @@ class Suin_FTPClient_FTPClientTest extends Suin_FTPClient_Test_TestCase
 		$this->assertTrue($actual);
 	}
 
+	public function testGetSystem()
+	{
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_getSystem'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_getSystem')
+			->will($this->returnValue('Unix'));
+
+		$actual = $client->getSystem();
+		$this->assertSame('Unix', $actual);
+
+		// Test cache
+		$actual = $client->getSystem();
+		$this->assertSame('Unix', $actual);
+	}
+
+	public function testGetFeatures()
+	{
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_getFeatures'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_getFeatures')
+			->will($this->returnValue('FEAT'));
+
+		$actual = $client->getFeatures();
+		$this->assertSame('FEAT', $actual);
+
+		// Test cache
+		$actual = $client->getFeatures();
+		$this->assertSame('FEAT', $actual);
+	}
+
 	public function testDisconnect()
 	{
 		$client = $this
@@ -611,6 +651,201 @@ class Suin_FTPClient_FTPClientTest extends Suin_FTPClient_Test_TestCase
 	 * @depends testRealServerAvailable
 	 */
 	public function testGetList_With_real_server()
+	{
+		// TODO
+	}
+
+	public function testGetFileSize()
+	{
+		// Case: Not supporting SIZE command.
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_supports', '_request'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_supports')
+			->with('SIZE')
+			->will($this->returnValue(false));
+		$client
+			->expects($this->never())
+			->method('_request');
+
+		$actual = $client->getFileSize('filename');
+		$this->assertFalse($actual);
+	}
+
+	public function testGetFileSize_Response_code_is_not_213()
+	{
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_supports', '_request'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_supports')
+			->with('SIZE')
+			->will($this->returnValue(true));
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('SIZE filename')
+			->will($this->returnValue(array('code' => 0)));
+
+		$actual = $client->getFileSize('filename');
+		$this->assertFalse($actual);
+	}
+
+	public function testGetFileSize_Response_message_is_not_valid_format()
+	{
+		$responseMessage = '213 this is invalid format';
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_supports', '_request'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_supports')
+			->with('SIZE')
+			->will($this->returnValue(true));
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('SIZE filename')
+			->will($this->returnValue(array('code' => 213, 'message' => $responseMessage)));
+
+		$actual = $client->getFileSize('filename');
+		$this->assertFalse($actual);
+	}
+
+	public function testGetFileSize_Success()
+	{
+		$responseMessage = '213 1024';
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_supports', '_request'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_supports')
+			->with('SIZE')
+			->will($this->returnValue(true));
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('SIZE filename')
+			->will($this->returnValue(array('code' => 213, 'message' => $responseMessage)));
+
+		$actual = $client->getFileSize('filename');
+		$this->assertSame(1024, $actual);
+	}
+
+	/**
+	 * @depends testRealServerAvailable
+	 */
+	public function testGetFileSize_With_real_server()
+	{
+		// TODO
+	}
+
+	public function testGetModifiedDateTime()
+	{
+		// Case: Not supporting MDTM command.
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_supports', '_request'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_supports')
+			->with('MDTM')
+			->will($this->returnValue(false));
+		$client
+			->expects($this->never())
+			->method('_request');
+
+		$actual = $client->getModifiedDateTime('filename');
+		$this->assertFalse($actual);
+	}
+
+	public function testGetModifiedDateTime_Response_code_is_not_213()
+	{
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_supports', '_request'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_supports')
+			->with('MDTM')
+			->will($this->returnValue(true));
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('MDTM filename')
+			->will($this->returnValue(array('code' => 0)));
+
+		$actual = $client->getModifiedDateTime('filename');
+		$this->assertFalse($actual);
+	}
+
+	public function testGetModifiedDateTime_Response_message_is_not_valid_format()
+	{
+		$responseMessage = '213 this is invalid format';
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_supports', '_request'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_supports')
+			->with('MDTM')
+			->will($this->returnValue(true));
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('MDTM filename')
+			->will($this->returnValue(array('code' => 213, 'message' => $responseMessage)));
+
+		$actual = $client->getModifiedDateTime('filename');
+		$this->assertFalse($actual);
+	}
+
+	public function testGetModifiedDateTime_Success()
+	{
+		$utc = new DateTime('now', new DateTimeZone('UTC'));
+		$responseMessage = '213 '.$utc->format('YmdHis');
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_supports', '_request'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_supports')
+			->with('MDTM')
+			->will($this->returnValue(true));
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('MDTM filename')
+			->will($this->returnValue(array('code' => 213, 'message' => $responseMessage)));
+
+		$actual = $client->getModifiedDateTime('filename');
+		$this->assertSame($utc->getTimestamp(), $actual);
+	}
+
+	/**
+	 * @depends testRealServerAvailable
+	 */
+	public function testGetModifiedDateTime_With_real_server()
 	{
 		// TODO
 	}
