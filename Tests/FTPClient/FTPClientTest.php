@@ -1588,4 +1588,124 @@ class Suin_FTPClient_FTPClientTest extends Suin_FTPClient_Test_TestCase
 	{
 		// TODO
 	}
+
+	public function test_getFeatures()
+	{
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_request'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('FEAT')
+			->will($this->returnValue(array('code' => 0)));
+
+		$class = new ReflectionClass($client);
+		$method = $class->getMethod('_getFeatures');
+		$method->setAccessible(true);
+		$actual = $method->invoke($client);
+		$this->assertFalse($actual);
+	}
+
+	public function test_getFeatures_With_not_enough_response()
+	{
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_request'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('FEAT')
+			->will($this->returnValue(array('code' => 211, 'message' => "line 1")));
+
+		$class = new ReflectionClass($client);
+		$method = $class->getMethod('_getFeatures');
+		$method->setAccessible(true);
+		$actual = $method->invoke($client);
+		$this->assertFalse($actual);
+	}
+
+	public function test_getFeatures_With_no_features()
+	{
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_request'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('FEAT')
+			->will($this->returnValue(array('code' => 211, 'message' => "line 1\r\nline 2")));
+
+		$class = new ReflectionClass($client);
+		$method = $class->getMethod('_getFeatures');
+		$method->setAccessible(true);
+		$actual = $method->invoke($client);
+		$this->assertSame(array(), $actual);
+	}
+
+	public function test_getFeatures_Success()
+	{
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_request'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('FEAT')
+			->will($this->returnValue(array('code' => 211, 'message' => "line 1\r\nFEAT1\r\nFEAT2\r\nFEAT3 foo bar\r\nlast line")));
+
+		$expect = array(
+			'FEAT1' => 'FEAT1',
+			'FEAT2' => 'FEAT2',
+			'FEAT3' => 'FEAT3 foo bar',
+		);
+
+		$class = new ReflectionClass($client);
+		$method = $class->getMethod('_getFeatures');
+		$method->setAccessible(true);
+		$actual = $method->invoke($client);
+		$this->assertSame($expect, $actual);
+	}
+
+	/**
+	 * @param $expect
+	 * @param $command
+	 * @param $features
+	 * @dataProvider data4test_supports
+	 */
+	public function test_supports($expect, $command, $features)
+	{
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('getFeatures'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('getFeatures')
+			->will($this->returnValue($features));
+
+		$class = new ReflectionClass($client);
+		$method = $class->getMethod('_supports');
+		$method->setAccessible(true);
+		$actual = $method->invoke($client, $command);
+		$this->assertSame($expect, $actual);
+	}
+
+	public static function data4test_supports()
+	{
+		return array(
+			// [expect, command, features]
+			array(false, 'FEAT1', array('FEAT2' => null, 'FEAT3' => null)),
+			array(true, 'FEAT1', array('FEAT1' => null, 'FEAT2' => null)),
+		);
+	}
 }
