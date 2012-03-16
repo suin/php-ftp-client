@@ -1514,4 +1514,78 @@ class Suin_FTPClient_FTPClientTest extends Suin_FTPClient_Test_TestCase
 		$method->setAccessible(true);
 		$method->invoke($client);
 	}
+
+	public function test_getResponse_With_multiline()
+	{
+		$response = "123-Message Message\r\nLINE 1\r\nLINE 2\r\n123 Message Message";
+
+		$connection = tmpfile();
+		fwrite($connection, $response);
+		fseek($connection, 0);
+
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->getMock();
+
+		$class = new ReflectionClass($client);
+		$property = $class->getProperty('connection');
+		$property->setAccessible(true);
+		$property->setValue($client, $connection);
+
+		$method = $class->getMethod('_getResponse');
+		$method->setAccessible(true);
+		$actual = $method->invoke($client);
+		$expect = array(
+			'code'    => 123,
+			'message' => $response,
+		);
+		$this->assertSame($expect, $actual);
+	}
+
+	public function test_getSystem()
+	{
+		// Case: code is not 215
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_request'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('SYST')
+			->will($this->returnValue(array('code' => 0)));
+
+		$class = new ReflectionClass($client);
+		$method = $class->getMethod('_getSystem');
+		$method->setAccessible(true);
+		$actual = $method->invoke($client);
+		$this->assertFalse($actual);
+	}
+
+	public function test_getSystem_Success()
+	{
+		$client = $this
+			->getMockBuilder('Suin_FTPClient_FTPClient')
+			->disableOriginalConstructor()
+			->setMethods(array('_request'))
+			->getMock();
+		$client
+			->expects($this->once())
+			->method('_request')
+			->with('SYST')
+			->will($this->returnValue(array('code' => 215, 'message' => '215 Unix Foo Bar.')));
+
+		$class = new ReflectionClass($client);
+		$method = $class->getMethod('_getSystem');
+		$method->setAccessible(true);
+		$actual = $method->invoke($client);
+		$this->assertSame('Unix', $actual);
+	}
+
+	public function test_getSystem_With_real_server()
+	{
+		// TODO
+	}
 }
