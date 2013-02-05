@@ -370,6 +370,7 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 			fwrite($localFilePointer, fread($dataConnection, 10240), 10240);
 		}
 
+		$response = $this->_getResponse();
 
 		return true;
 	}
@@ -433,6 +434,8 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 		{
 			fwrite($dataConnection, fread($localFilePointer, 10240), 10240);
 		}
+
+		$response = $this->_getResponse();
 
 		return true;
 	}
