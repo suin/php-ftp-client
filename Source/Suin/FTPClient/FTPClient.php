@@ -235,7 +235,7 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 
 		$response = $this->_request(sprintf('NLST %s', $directory));
 
-		if ( $response['code'] !== 150 )
+		if ( $response['code'] !== 150 and $response['code'] !== 125 )
 		{
 			return false;
 		}
@@ -396,7 +396,7 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 
 		$response = $this->_request(sprintf('RETR %s', $remoteFilename));
 
-		if ( $response['code'] !== 150 )
+		if ( $response['code'] !== 150 and $response['code'] !== 125 )
 		{
 			return false;
 		}
@@ -460,7 +460,7 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 
 		$response = $this->_request(sprintf('STOR %s', $remoteFilename));
 
-		if ( $response['code'] !== 150 )
+		if ( $response['code'] !== 150 and $response['code'] !== 125 )
 		{
 			return false;
 		}
