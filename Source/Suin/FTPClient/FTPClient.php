@@ -252,6 +252,42 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 
 		return $list;
 	}
+	
+
+
+	/**
+	 * Return a raw list of files in the given directory.
+	 * @param string $directory
+	 * @return array|bool If error, returns FALSE.
+	 */
+	public function getRawList($directory)
+	{
+		$dataConnection = $this->_openPassiveDataConnection();
+
+		if ( $dataConnection === false )
+		{
+			return false;
+		}
+
+		$response = $this->_request(sprintf('LIST -a %s', $directory));
+
+		if ( $response['code'] !== 150 and $response['code'] !== 125 )
+		{
+			return false;
+		}
+
+		$list = '';
+
+		while ( feof($dataConnection) === false )
+		{
+			$list .= fread($dataConnection, 1024);
+		}
+
+		$list = trim($list);
+		$list = preg_split("/[\n\r]+/", $list);
+
+		return $list;
+	}
 
 	/**
 	 * Return the size of the given file.
