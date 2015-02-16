@@ -355,7 +355,7 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 	 * @throws InvalidArgumentException
 	 * @throws RuntimeException
 	 */
-	public function download($remoteFilename, $localFilename, $mode)
+	public function download($remoteFilename, $localFilename, $mode=2)
 	{
 		$modes = array(
 			self::MODE_ASCII  => 'A',
@@ -419,7 +419,7 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 	 * @throws InvalidArgumentException
 	 * @throws RuntimeException
 	 */
-	public function upload($localFilename, $remoteFilename, $mode)
+	public function upload($localFilename, $remoteFilename, $mode=2)
 	{
 		$modes = array(
 			self::MODE_ASCII  => 'A',
