@@ -235,7 +235,43 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 
 		$response = $this->_request(sprintf('NLST %s', $directory));
 
-		if ( $response['code'] !== 150 )
+		if ( $response['code'] !== 150 and $response['code'] !== 125 )
+		{
+			return false;
+		}
+
+		$list = '';
+
+		while ( feof($dataConnection) === false )
+		{
+			$list .= fread($dataConnection, 1024);
+		}
+
+		$list = trim($list);
+		$list = preg_split("/[\n\r]+/", $list);
+
+		return $list;
+	}
+	
+
+
+	/**
+	 * Return a raw list of files in the given directory.
+	 * @param string $directory
+	 * @return array|bool If error, returns FALSE.
+	 */
+	public function getRawList($directory)
+	{
+		$dataConnection = $this->_openPassiveDataConnection();
+
+		if ( $dataConnection === false )
+		{
+			return false;
+		}
+
+		$response = $this->_request(sprintf('LIST -a %s', $directory));
+
+		if ( $response['code'] !== 150 and $response['code'] !== 125 )
 		{
 			return false;
 		}
@@ -319,7 +355,7 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 	 * @throws InvalidArgumentException
 	 * @throws RuntimeException
 	 */
-	public function download($remoteFilename, $localFilename, $mode)
+	public function download($remoteFilename, $localFilename, $mode=2)
 	{
 		$modes = array(
 			self::MODE_ASCII  => 'A',
@@ -360,7 +396,7 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 
 		$response = $this->_request(sprintf('RETR %s', $remoteFilename));
 
-		if ( $response['code'] !== 150 )
+		if ( $response['code'] !== 150 and $response['code'] !== 125 )
 		{
 			return false;
 		}
@@ -375,6 +411,56 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 	}
 
 	/**
+	 * Download a file from the FTP server.
+	 * @param string $remoteFilename
+	 * @param int $mode self::MODE_ASCII or self::MODE_BINARY
+	 * @return string If success return file content, fail return FALSE.
+	 * @throws InvalidArgumentException
+	 * @throws RuntimeException
+	 */
+	public function downloadString($remoteFilename, $mode=2)
+	{
+		$modes = array(
+			self::MODE_ASCII  => 'A',
+			self::MODE_BINARY => 'I',
+		);
+
+		if ( array_key_exists($mode, $modes) === false )
+		{
+			throw new InvalidArgumentException(sprintf('Invalid mode "%s" was given', $mode));
+		}
+
+		$response = $this->_request(sprintf('TYPE %s', $modes[$mode]));
+
+		if ( $response['code'] !== 200 )
+		{
+			return false;
+		}
+
+		$dataConnection = $this->_openPassiveDataConnection();
+
+		if ( $dataConnection === false )
+		{
+			return false;
+		}
+
+		$response = $this->_request(sprintf('RETR %s', $remoteFilename));
+
+		if ( $response['code'] !== 150 and $response['code'] !== 125 )
+		{
+			return false;
+		}
+
+        $str = '';
+		while ( feof($dataConnection) === false )
+		{
+			$str .= fread($dataConnection, 10240);
+		}
+
+		return $str;
+	}
+
+	/**
 	 * Upload a file to the FTP server.
 	 * @param string $localFilename
 	 * @param string $remoteFilename
@@ -383,7 +469,7 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 	 * @throws InvalidArgumentException
 	 * @throws RuntimeException
 	 */
-	public function upload($localFilename, $remoteFilename, $mode)
+	public function upload($localFilename, $remoteFilename, $mode=2)
 	{
 		$modes = array(
 			self::MODE_ASCII  => 'A',
@@ -424,7 +510,7 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 
 		$response = $this->_request(sprintf('STOR %s', $remoteFilename));
 
-		if ( $response['code'] !== 150 )
+		if ( $response['code'] !== 150 and $response['code'] !== 125 )
 		{
 			return false;
 		}
@@ -433,6 +519,53 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 		{
 			fwrite($dataConnection, fread($localFilePointer, 10240), 10240);
 		}
+
+		return true;
+	}
+
+	/**
+	 * Upload a file to the FTP server.
+	 * @param string $content
+	 * @param string $remoteFilename
+	 * @param int $mode self::MODE_ASCII or self::MODE_BINARY
+	 * @return bool If success return TRUE, fail return FALSE.
+	 * @throws InvalidArgumentException
+	 * @throws RuntimeException
+	 */
+	public function uploadString($content, $remoteFilename, $mode=2)
+	{
+		$modes = array(
+			self::MODE_ASCII  => 'A',
+			self::MODE_BINARY => 'I',
+		);
+
+		if ( array_key_exists($mode, $modes) === false )
+		{
+			throw new InvalidArgumentException(sprintf('Invalid mode "%s" was given', $mode));
+		}
+
+		$response = $this->_request(sprintf('TYPE %s', $modes[$mode]));
+
+		if ( $response['code'] !== 200 )
+		{
+			return false;
+		}
+
+		$dataConnection = $this->_openPassiveDataConnection();
+
+		if ( $dataConnection === false )
+		{
+			return false;
+		}
+
+		$response = $this->_request(sprintf('STOR %s', $remoteFilename));
+
+		if ( $response['code'] !== 150 and $response['code'] !== 125 )
+		{
+			return false;
+		}
+
+		fwrite($dataConnection, $content);
 
 		return true;
 	}
