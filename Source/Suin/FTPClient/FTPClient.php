@@ -571,6 +571,16 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 	}
 
 	/**
+	 * Send a raw command.
+	 * @param string $command
+	 * @return array
+	 */
+	public function raw($command)
+	{
+	    return $this->_request($command);
+	}
+
+	/**
 	 * Set an observer.
 	 * @param Suin_FTPClient_ObserverInterface $observer
 	 */
