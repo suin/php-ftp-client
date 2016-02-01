@@ -519,6 +519,13 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 		{
 			fwrite($dataConnection, fread($localFilePointer, 10240), 10240);
 		}
+		
+		$this->_closePassv($dataConnection);
+
+		$response = $this->_getResponse();
+		if ($response['code'] != 226) {
+			return false;
+		}
 
 		return true;
 	}
@@ -566,7 +573,14 @@ class Suin_FTPClient_FTPClient implements Suin_FTPClient_FTPClientInterface,
 		}
 
 		fwrite($dataConnection, $content);
+		
+		$this->_closePassv($dataConnection);
 
+		$response = $this->_getResponse();
+		if ($response['code'] != 226) {
+			return false;
+		}
+		
 		return true;
 	}
 
