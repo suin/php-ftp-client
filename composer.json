@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Suin\\FTPClient": "Source"
+            "Suin_FTPClient_": "Source"
         }
     }
 }
